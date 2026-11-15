@@ -143,7 +143,51 @@ nav.open{display:flex}
   border: 1px solid rgba(59, 130, 246, 0.35);
   color: #93b4ff;
 }
+.recs ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
+.recs li {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+
+.recs li .chip {
+  display: inline-block;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #93b4ff;
+}
+
+.recs li .chip::after { content: " ▾"; }
+.recs li.show .chip::after { content: " ▴"; }
+
+.recs li img {
+  display: none;
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  margin-top: 8px;
+  border-radius: 10px;
+  border: 1px solid rgba(59, 130, 246, 0.35);
+}
+
+.recs li.show img { display: block; }
+
+.card.open .recs { max-height: 2000px; }
 .cards.hob {
   align-items: start;
 }
