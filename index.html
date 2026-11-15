@@ -231,6 +231,74 @@
       }
     });
   });
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+  import { getFirestore, collection, addDoc, query, orderBy, limit, onSnapshot, serverTimestamp }
+    from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyAFPSRpxy_RhAYLtb2EQJZFI05raXZbrZU",
+    authDomain: "portfolio-kaii.firebaseapp.com",
+    projectId: "portfolio-kaii",
+    storageBucket: "portfolio-kaii.firebasestorage.app",
+    messagingSenderId: "147447162806",
+    appId: "1:147447162806:web:3dd583f571163788ea4317"
+  };
+
+  const db = getFirestore(initializeApp(firebaseConfig));
+  const col = collection(db, "comments");
+
+  const nameEl = document.getElementById("cm-name");
+  const textEl = document.getElementById("cm-text");
+  const sendEl = document.getElementById("cm-send");
+  const listEl = document.getElementById("cm-list");
+  const countEl = document.getElementById("cm-count");
+
+  onSnapshot(query(col, orderBy("createdAt", "desc"), limit(100)), function (snap) {
+    listEl.textContent = "";
+    countEl.textContent = snap.size;
+    snap.forEach(function (doc) {
+      var d = doc.data();
+      var item = document.createElement("div");
+      item.className = "cm-item";
+
+      var head = document.createElement("div");
+      var who = document.createElement("strong");
+      who.textContent = d.name;
+      var when = document.createElement("span");
+      when.textContent = d.createdAt ? d.createdAt.toDate().toLocaleDateString("id-ID") : "";
+      head.append(who, when);
+
+      var body = document.createElement("p");
+      body.textContent = d.text;
+
+      item.append(head, body);
+      listEl.appendChild(item);
+    });
+  });
+
+  sendEl.addEventListener("click", async function () {
+    var name = nameEl.value.trim();
+    var text = textEl.value.trim();
+    if (!name || !text) { alert("Nama dan komentar harus diisi."); return; }
+
+    try {
+      var last = Number(localStorage.getItem("cm-last") || 0);
+      if (Date.now() - last < 30000) { alert("Tunggu sebentar sebelum komentar lagi."); return; }
+    } catch (e) {}
+
+    sendEl.disabled = true;
+    try {
+      await addDoc(col, { name: name, text: text, createdAt: serverTimestamp() });
+      textEl.value = "";
+      try { localStorage.setItem("cm-last", Date.now()); } catch (e) {}
+    } catch (err) {
+      console.error(err);
+      alert("Gagal mengirim komentar. Coba lagi.");
+    }
+    sendEl.disabled = false;
+  });
 </script>
+ </script>
 </body>
 </html>
