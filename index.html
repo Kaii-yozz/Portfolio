@@ -193,8 +193,8 @@
 <footer>
   <div><p>© 2026 Kaii. All Rights Reserved.</p><p>Designed with passion by Kaii.</p></div>
   <button id="top" class="btn ghost" aria-label="Back to top"><i data-lucide="arrow-up"></i> Back to Top</button>
-</footer>
- <script>
+
+<script>
   document.querySelectorAll('.cards.hob .card').forEach(function (card) {
     if (!card.querySelector('.recs')) return;
     card.classList.add('expandable');
@@ -231,6 +231,8 @@
       }
     });
   });
+</script>
+
 <script type="module">
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import { getFirestore, collection, addDoc, query, orderBy, limit, onSnapshot, serverTimestamp }
@@ -299,6 +301,5 @@
     sendEl.disabled = false;
   });
 </script>
- </script>
 </body>
 </html>
