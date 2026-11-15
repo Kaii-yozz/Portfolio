@@ -171,12 +171,20 @@
   <div><p>© 2026 Kaii. All Rights Reserved.</p><p>Designed with passion by Kaii.</p></div>
   <button id="top" class="btn ghost" aria-label="Back to top"><i data-lucide="arrow-up"></i> Back to Top</button>
 </footer>
-  <script>
+ <script>
   document.querySelectorAll('.cards.hob .card').forEach(function (card) {
     if (!card.querySelector('.recs')) return;
     card.classList.add('expandable');
-    card.addEventListener('click', function () {
+    card.addEventListener('click', function (e) {
+      if (e.target.closest('.recs')) return;
       card.classList.toggle('open');
+    });
+  });
+
+  document.querySelectorAll('.recs li').forEach(function (li) {
+    if (!li.querySelector('img')) return;
+    li.querySelector('.chip').addEventListener('click', function () {
+      li.classList.toggle('show');
     });
   });
 </script>
