@@ -107,11 +107,51 @@
 <section id="hobbies" class="sec">
   <h2 class="reveal">My Hobbies</h2>
   <div class="cards hob">
-    <article class="glass card reveal"><i data-lucide="book-open-text"></i><h3>Reading</h3><p>Membaca komik, manga, dan novel.</p></article>
-    <article class="glass card reveal"><i data-lucide="tv"></i><h3>Watching Anime</h3><p>Menonton anime.</p></article>
+    <article class="glass card reveal"><i data-lucide="book-open-text"></i><h3>Reading</h3><p>Membaca komik, manga, dan novel.</p>
+      <div class="recs"><span class="recs-label">Rekomendasi</span>
+        <ul>
+          <li>Sakamoto Days</li>
+          <li>3726 MDPL</li>
+          <li>Chainsaw Man</li>
+          <li>Kaoru Hana wa Rin to Saku</li>
+          <li>Osoraku Kanojo wa Ore no Aniki wo Neratteru</li>
+        </ul>
+      </div>
+    </article>
+    <article class="glass card reveal"><i data-lucide="tv"></i><h3>Watching Anime</h3><p>Menonton anime.</p>
+      <div class="recs"><span class="recs-label">Rekomendasi</span>
+        <ul>
+          <li>Black Clover</li>
+          <li>Gotoubun no Hanayome</li>
+          <li>Jujutsu Kaisen</li>
+          <li>Lycris Recoil</li>
+          <li>Spy x family</li>
+        </ul>
+      </div>
+    </article>
     <article class="glass card reveal"><i data-lucide="goal"></i><h3>Futsal</h3><p>Bermain futsal dan mengembangkan kemampuan olahraga.</p></article>
-    <article class="glass card reveal"><i data-lucide="gamepad-2"></i><h3>Gaming</h3><p>Bermain game.</p></article>
-    <article class="glass card reveal"><i data-lucide="headphones"></i><h3>Music</h3><p>Mendengarkan musik.</p></article>
+    <article class="glass card reveal"><i data-lucide="gamepad-2"></i><h3>Gaming</h3><p>Bermain game.</p>
+      <div class="recs"><span class="recs-label">Rekomendasi</span>
+        <ul>
+          <li>Mobile Legends</li>
+          <li>Valorant</li>
+          <li>Efootball</li>
+          <li>Roblox</li>
+          <li>Wuthering Waves</li>
+        </ul>
+      </div>
+    </article>
+    <article class="glass card reveal"><i data-lucide="headphones"></i><h3>Music</h3><p>Mendengarkan musik.</p>
+      <div class="recs"><span class="recs-label">Rekomendasi</span>
+        <ul>
+          <li>Somebody's Pleasure</li>
+          <li>I've Always Loved You</li>
+          <li>Shape of May Heart</li>
+          <li>Love.</li>
+          <li>Killswitch Lullaby</li>
+        </ul>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -131,5 +171,14 @@
   <div><p>© 2026 Kaii. All Rights Reserved.</p><p>Designed with passion by Kaii.</p></div>
   <button id="top" class="btn ghost" aria-label="Back to top"><i data-lucide="arrow-up"></i> Back to Top</button>
 </footer>
+  <script>
+  document.querySelectorAll('.cards.hob .card').forEach(function (card) {
+    if (!card.querySelector('.recs')) return;
+    card.classList.add('expandable');
+    card.addEventListener('click', function () {
+      card.classList.toggle('open');
+    });
+  });
+</script>
 </body>
 </html>
