@@ -186,10 +186,31 @@
     });
   });
 
+  // Reading & Anime: klik label -> foto muncul
   document.querySelectorAll('.recs li').forEach(function (li) {
     if (!li.querySelector('img')) return;
     li.querySelector('.chip').addEventListener('click', function () {
       li.classList.toggle('show');
+    });
+  });
+
+  // Music: klik lagu -> player Spotify muncul
+  document.querySelectorAll('.recs li.song').forEach(function (li) {
+    var chip = li.querySelector('.chip');
+    var frame = li.querySelector('iframe');
+
+    chip.addEventListener('click', function () {
+      var opening = !li.classList.contains('show');
+
+      document.querySelectorAll('.recs li.song.show').forEach(function (other) {
+        other.classList.remove('show');
+        other.querySelector('iframe').removeAttribute('src');
+      });
+
+      if (opening) {
+        frame.src = frame.dataset.src;
+        li.classList.add('show');
+      }
     });
   });
 </script>
