@@ -160,26 +160,22 @@
   </div>
 </section>
 
- <section id="comments" class="sec">
+<section id="comments" class="sec">
   <h2 class="reveal">Comments</h2>
-  <p class="reveal">Tinggalkan komentar atau pesan buatku di sini (perlu login GitHub).</p>
+  <article class="glass card reveal cm-box">
+    <h3>Komentar (<span id="cm-count">0</span>)</h3>
 
-  <script src="https://giscus.app/client.js"
-        data-repo="Kaii-yozz/Portfolio"
-        data-repo-id="R_kgDOVpay4A"
-        data-category="Comments"
-        data-category-id="DIC_kwDOVpay4M4DLKnO"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="transparent_dark"
-        data-lang="id"
-        crossorigin="anonymous"
-        async>
-</script>
+    <label for="cm-name">Nama</label>
+    <input id="cm-name" type="text" maxlength="30" placeholder="Masukkan nama kamu...">
 
+    <label for="cm-text">Komentar</label>
+    <textarea id="cm-text" maxlength="300" rows="4" placeholder="Tulis komentar kamu di sini..."></textarea>
+
+    <button id="cm-send" class="cm-btn" type="button">Kirim Komentar</button>
+
+    <div id="cm-list"></div>
+    <p class="cm-note">Pengirim bersifat anonim. Komentar bersifat publik dan bisa dilihat semua pengunjung.</p>
+  </article>
 </section>
   <section id="contact" class="sec">
   <h2 class="reveal">Let's Connect!</h2>
