@@ -191,3 +191,14 @@ nav.open{display:flex}
 .cards.hob {
   align-items: start;
 }
+.recs li.song iframe {
+  display: none;
+  width: 100%;
+  border: 0;
+  border-radius: 12px;
+  margin-top: 8px;
+}
+
+.recs li.song.show iframe {
+  display: block;
+}
