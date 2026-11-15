@@ -86,3 +86,64 @@ nav.open{display:flex}
 .stats{gap:22px}}
 @media(max-width:520px){.info-grid{grid-template-columns:1fr}.sec{padding:64px 5vw}footer{justify-content:center;text-align:center}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+.hob .card.expandable {
+  cursor: pointer;
+}
+
+.hob .card.expandable::after {
+  content: "Klik untuk lihat rekomendasi ▾";
+  display: block;
+  margin-top: 12px;
+  font-size: 0.72rem;
+  color: #6b7a99;
+}
+
+.hob .card.expandable.open::after {
+  content: "Tutup ▴";
+}
+
+.recs {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.3s ease;
+}
+
+.card.open .recs {
+  max-height: 400px;
+  opacity: 1;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.recs-label {
+  display: block;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b7a99;
+  margin-bottom: 8px;
+}
+
+.recs ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.recs li {
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background: rgba(59, 130, 246, 0.12);
+  border: 1px solid rgba(59, 130, 246, 0.35);
+  color: #93b4ff;
+}
+
+.cards.hob {
+  align-items: start;
+}
